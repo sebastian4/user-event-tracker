@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "5928bea6-6a51-4580-8d2b-84c593ccc22d",
+		"name": "postman-tracker-test-set",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "webhost post create good user 1 3003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test something\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var jwt = jsonData.jwt;",
+							"    pm.globals.set(\"jwtauth\", jwt);",
+							"    pm.expect(\"admin\" == \"admin\").to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"aaa@gmail.com\",\n    \"password\": \"hahehihohu\",\n    \"phone\": \"333-111-1111\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/user",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhost post create good user 2 3003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test something\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var jwt = jsonData.jwt;",
+							"    pm.globals.set(\"jwtauth\", jwt);",
+							"    pm.expect(\"admin\" == \"admin\").to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bbb@gmail.com\",\n    \"password\": \"hahesdsdhu\",\n    \"phone\": \"333-111-4321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/user",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhost post create bad user 5 3003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test something\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var jwt = jsonData.jwt;",
+							"    pm.globals.set(\"jwtauth\", jwt);",
+							"    pm.expect(\"admin\" == \"admin\").to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"eee@gmail.com\",\n    \"password\": \"ha333sdhu\",\n    \"phone\": \"s111-4321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/user",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://webhost:3000/ get all events",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "073f04eb-bea6-4c27-a8b1-94c058f4c878",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwtauth}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{webhost}}:3003/event/all",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://webhost:3000/ get single events",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "073f04eb-bea6-4c27-a8b1-94c058f4c878",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwtauth}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{webhost}}:3003/event/single/aaa@gmail.com",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event",
+						"single",
+						"aaa@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://webhost:3000/ get all events last day",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "073f04eb-bea6-4c27-a8b1-94c058f4c878",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwtauth}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{webhost}}:3003/event/all/lastday",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event",
+						"all",
+						"lastday"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhost post create event 110 3003 login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test something\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var jwt = jsonData.jwt;",
+							"    pm.globals.set(\"jwtauth\", jwt);",
+							"    pm.expect(\"admin\" == \"admin\").to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwtauth}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"aaa@gmail.com\",\n    \"password\": \"hahehihohu\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/event/login",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhost post create event 111 3003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwtauth}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"ADD_COMMENT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/event",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhost post create event 112 3003",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd66c549-08aa-4b57-afb0-0aa8efae0d03",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{jwtauth}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"ADD_POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{webhost}}:3003/event",
+					"protocol": "http",
+					"host": [
+						"{{webhost}}"
+					],
+					"port": "3003",
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
